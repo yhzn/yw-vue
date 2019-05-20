@@ -48,6 +48,12 @@
                input{
                    width:100%;
                }
+               .el-input__suffix-inner{
+                   position: absolute;
+                   top:50%;
+                   right:0;
+                   transform: translateY(-50%);
+               }
            }
        }
        .sign-in{
@@ -370,7 +376,6 @@
                         phoneNum:this.phoneNum,
                         code:this.code,
                         password:this.password,
-
                     }
                 }
                 if(!validate({ctx:this,rules:this.v})){
