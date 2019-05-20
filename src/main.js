@@ -12,7 +12,7 @@ import App from "./App.vue";
 
 
 Vue.config.productionTip = false;
-Vue.use(ElementUI)
+Vue.use(ElementUI);
 // import {
 //     Menu,
 //     Submenu,

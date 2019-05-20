@@ -85,13 +85,13 @@
              </p>
              <ul>
                  <li>管理员</li>
-                 <li></li>
+                 <li @click="() => {this.$router.push('/')}"></li>
              </ul>
          </header>
         <section class="main">
              <section class="menu">
                  <el-menu
-                         default-active="home"
+                         :default-active="menuHighlight"
                          class="el-menu"
                          :unique-opened="true"
                          :router="true"
@@ -99,41 +99,44 @@
                          @open="handleOpen"
                          @close="handleClose">
                      <el-menu-item index="">
-                         <i class="el-icon-menu"></i>
-                         <span slot="title">首页</span>
+                         <i class="el-icon-s-home"></i>
+                         <span slot="title">首页{{menuHighlight}}</span>
                      </el-menu-item>
                      <el-submenu index="1">
                          <template slot="title">
                              <!--<i class="el-icon-location"></i>-->
-                             <span>导航一</span>
+                             <span>业务处理</span>
                          </template>
                          <!--<el-menu-item-group>-->
-                             <el-menu-item index="home">选项1</el-menu-item>
-                             <el-menu-item index="about">选项2</el-menu-item>
+                             <el-menu-item index="home">病区</el-menu-item>
+                             <el-menu-item index="about">临床科室</el-menu-item>
+                             <el-menu-item index="">门诊收费处</el-menu-item>
+                             <el-menu-item index="">医技科室</el-menu-item>
+                             <el-menu-item index="">手术室</el-menu-item>
                          <!--</el-menu-item-group>-->
                      </el-submenu>
-                     <el-submenu index="6">
+                     <el-submenu index="2">
                          <template slot="title">
                              <!--<i class="el-icon-location"></i>-->
-                             <span>导航一</span>
+                             <span>条目维护设置</span>
                          </template>
                          <!--<el-menu-item-group>-->
-                         <el-menu-item index="6-1">选项1</el-menu-item>
-                         <el-menu-item index="6-2">选项2</el-menu-item>
+                         <el-menu-item index="">设置1</el-menu-item>
+                         <el-menu-item index="">设置2</el-menu-item>
                          <!--</el-menu-item-group>-->
                      </el-submenu>
-                     <el-menu-item index="2">
-                         <i class="el-icon-menu"></i>
-                         <span slot="title">导航二</span>
-                     </el-menu-item>
-                     <el-menu-item index="3" disabled>
-                         <i class="el-icon-document"></i>
-                         <span slot="title">导航三</span>
-                     </el-menu-item>
-                     <el-menu-item index="4">
-                         <i class="el-icon-setting"></i>
-                         <span slot="title">导航四</span>
-                     </el-menu-item>
+                     <!--<el-menu-item index="2">-->
+                         <!--<i class="el-icon-menu"></i>-->
+                         <!--<span slot="title">导航二</span>-->
+                     <!--</el-menu-item>-->
+                     <!--<el-menu-item index="3" disabled>-->
+                         <!--<i class="el-icon-document"></i>-->
+                         <!--<span slot="title">导航三</span>-->
+                     <!--</el-menu-item>-->
+                     <!--<el-menu-item index="4">-->
+                         <!--<i class="el-icon-setting"></i>-->
+                         <!--<span slot="title">导航四</span>-->
+                     <!--</el-menu-item>-->
                  </el-menu>
              </section>
              <section class="container">
@@ -151,20 +154,21 @@ export default {
         return {
             user:"",
             title:"qw",
+            menuHighlight:window.location.pathname.replace("?","/").split("/")[2],
         }
     },
     components:{
 
     },
     mounted () {
-
     },
     methods:{
         handleOpen () {},
         handleClose () {},
         handleSelect (par) {
             console.log(par)
-        }
+        },
+
     }
 }
 </script>

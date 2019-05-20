@@ -1,8 +1,9 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home";
-import Aboue from "./views/About"
+import About from "./views/About"
 import Layout from "./views/layout"
+import Sign from "./views/sign"
 
 Vue.use(Router);
 
@@ -11,7 +12,7 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: "/",
+      path: "/layout",
       name: "Layout",
       component: Layout,
       children:[
@@ -22,10 +23,20 @@ export default new Router({
           {
               path:'about',
               name:'about',
-              component: Aboue
+              component: About
           }
       ]
     },
+      {
+          path: "/",
+          name: "Sign",
+          component:Sign
+      },
+      {
+          path: "/:page",
+          name: "Sign",
+          component:Sign
+      }
     // {
     //   path: "/about",
     //   name: "about",
