@@ -129,6 +129,5 @@ class Validator {
     }
 }
 
-
 let validator = new Validator({type});
 export let validate = validator.validate.bind(validator);

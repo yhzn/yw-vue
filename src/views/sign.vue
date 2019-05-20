@@ -142,7 +142,7 @@
                 <li>
                     <section class="get-code">
                         <input type="text" name="code" v-model.trim="code" placeholder="请输入验证码">
-                        <span>获取验证码</span>
+                        <span @click="getCode">{{btnText}}</span>
                     </section>
                     <p>{{v.code.tips}}</p>
                 </li>
@@ -185,7 +185,7 @@
 </template>
 <script>
     import {validate} from "@/validate/validator";
-    import {clone} from "../tool/tool";
+    import {clone,countDown} from "../tool/tool";
     let signInRules={
         user:{
             required:true,
@@ -293,8 +293,9 @@
                 code:'',
                 password:'',
                 surePassword:'',
-                v,
-                signInRules:clone(signInRules)
+                v:clone(v),
+                signInRules:clone(signInRules),
+                btnText:"获取验证码",
             }
         },
         watch:{
@@ -322,16 +323,20 @@
                     this.signInRules=clone(signInRules)
                 }
                 if(page==='register'){
-                    this.v.department.required=true;
-                    this.v.category.required=true;
-                    this.v.userNum.required=true;
+                    this.v=clone(v)
                 }
                 if(page==='resetPassword'){
-                    this.v.department.required=false;
-                    this.v.category.required=false;
-                    this.v.userNum.required=false;
+                    let cv=clone(v);
+                    cv.department.required=false;
+                    cv.category.required=false;
+                    cv.userNum.required=false;
+                    this.v=cv;
                 }
-
+            },
+            getCode () {
+                countDown(this,'btnText',()=>{
+                    console.log(12)
+                })
             },
             signIn () {
                 let par={

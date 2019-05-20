@@ -21,3 +21,20 @@ export let isFunction = (it) => {
     return is(it,'Function')
 
 }
+
+export let countDown = (ctx,buttonText,fn=()=>{},sec=60) => {
+    if(ctx[buttonText+"Flag"]){
+        return false;
+    }
+    fn();
+    ctx[buttonText+"Flag"]=true;
+    ctx[buttonText]=`${sec} s后重新获取`;
+    ctx.timer=setInterval(()=>{
+         ctx[buttonText]=`${--sec} s后重新获取`;
+         if(sec<0){
+             clearInterval(ctx.timer);
+             ctx[buttonText+"Flag"]=false;
+             ctx[buttonText]="获取验证码";
+         }
+    },1000)
+}
