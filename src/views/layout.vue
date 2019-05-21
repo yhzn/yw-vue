@@ -154,7 +154,7 @@ export default {
         return {
             user:"",
             title:"qw",
-            menuHighlight:window.location.pathname.replace("?","/").split("/")[2],
+            menuHighlight:window.location.hash.replace("#/layout/","").replace("?","/").split("/")[0],
         }
     },
     components:{

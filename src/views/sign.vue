@@ -91,6 +91,7 @@
                display: inline-block;
                height: 32px;
                width: 150px;
+               cursor: pointer;
                line-height: 32px;
                color:#3281ff;
                text-align: center;
